@@ -68,7 +68,9 @@ if [ -f $scriptPath ]; then
     debug "source ${huskyrc}"
     source ${huskyrc}
   fi
-  ${node} $scriptPath $hookName "$gitParams"
+  if [ -f "./src" ]; then
+    ${node} $scriptPath $hookName "$gitParams"  
+  fi
 else
   echo "Can't find Husky, skipping $hookName hook"
   echo "You can reinstall it using 'npm install husky --save-dev' or delete this hook"
