@@ -5,7 +5,7 @@ exports[`hookScript should match snapshot (OS X/Linux) 1`] = `
 # husky
 
 # Hook created by Husky
-#   Version: 1.2.0
+#   Version: 1.2.2
 #   At: <locale date string>
 #   See: https://github.com/typicode/husky#readme
 
@@ -33,7 +33,9 @@ if [ -f $scriptPath ]; then
     debug \\"source ~/.huskyrc\\"
     source ~/.huskyrc
   fi
-  node_modules/run-node/run-node $scriptPath $hookName \\"$gitParams\\"
+  if [ -f \\"./src\\" ]; then
+    node_modules/run-node/run-node $scriptPath $hookName \\"$gitParams\\"  
+  fi
 else
   echo \\"Can't find Husky, skipping $hookName hook\\"
   echo \\"You can reinstall it using 'npm install husky --save-dev' or delete this hook\\"
@@ -46,7 +48,7 @@ exports[`hookScript should match snapshot (Windows) 1`] = `
 # husky
 
 # Hook created by Husky
-#   Version: 1.2.0
+#   Version: 1.2.2
 #   At: <locale date string>
 #   See: https://github.com/typicode/husky#readme
 
@@ -70,7 +72,9 @@ if [ -f $scriptPath ]; then
     debug \\"source ~/.huskyrc\\"
     source ~/.huskyrc
   fi
-  node $scriptPath $hookName \\"$gitParams\\"
+  if [ -f \\"./src\\" ]; then
+    node $scriptPath $hookName \\"$gitParams\\"  
+  fi
 else
   echo \\"Can't find Husky, skipping $hookName hook\\"
   echo \\"You can reinstall it using 'npm install husky --save-dev' or delete this hook\\"
